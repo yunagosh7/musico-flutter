@@ -10,7 +10,7 @@ class FeaturedPlaylist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.go('/playlist_details/${playlist?.id}'),
+      onTap: () => context.push('/playlist_details/${playlist?.id}'),
       child: SizedBox(
         height: 140,
         width: 280,

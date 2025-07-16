@@ -19,15 +19,18 @@ class Playlist {
   String name;
   String? description;
 
-  // PlaylistTrack tracks;
+  List<Track>? tracks;
   List<SpotifyImage>? images;
+
+  int? followers;
 
   Playlist({
     required this.id,
     required this.name,
     this.description,
-    // required this.tracks,
+    this.tracks,
     this.images,
+    this.followers,
   });
 
   factory Playlist.fromJson(Map<String, dynamic> json) {
@@ -35,14 +38,17 @@ class Playlist {
       id: json['id'],
       name: json['name'],
       description: json['description'],
-      // tracks: PlaylistTrack.fromJson(json['tracks']),
+      tracks:
+          (json['tracks']['items'] as List?)
+              ?.map((item) => Track.fromJson(item['track']))
+              .toList(),
       images:
           (json['images'] as List<dynamic>?)
               ?.map((img) => SpotifyImage.fromJson(img))
               .toList(),
+      followers: json['followers']?['total'],
     );
   }
-
 }
 
 class FeaturedPlaylistResponseWrapper {

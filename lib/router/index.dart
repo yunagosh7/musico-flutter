@@ -41,8 +41,11 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: '/playlist_details/:id',
           pageBuilder:
-              (BuildContext context, GoRouterState state) =>
-                  NoTransitionPage(child: PlaylistDetailsPage()),
+              (BuildContext context, GoRouterState state) => NoTransitionPage(
+                child: PlaylistDetailsPage(
+                  playlistId: state.pathParameters['id']!,
+                ),
+              ),
         ),
       ],
     ),

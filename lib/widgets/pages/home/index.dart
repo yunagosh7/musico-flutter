@@ -36,7 +36,6 @@ class _HomePageState extends State<HomePage> {
         );
         try {
           tracksProvider.fetchTrackList();
-          playlistProvider.getPlaylist('3cEYpjA9oz9GiPac4AsH4n');
           playlistProvider.getFeaturedPlaylists();
         } catch (er) {
           print("error: $er");
@@ -61,6 +60,7 @@ class _HomePageState extends State<HomePage> {
     //  PageTemplate(
     //   child: 
       SingleChildScrollView(
+        padding: EdgeInsets.all(16),
         child: Column(
           children: [
             if (isLoading == true)
